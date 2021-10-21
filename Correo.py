@@ -19,10 +19,10 @@ from termcolor import colored"""
 
 
 def obtener_valores() -> list:
-    wb = load_workbook('Formato correos.xlsx')
+    wb = load_workbook('C:\\Users\\Personal\\Desktop\\OSCAR\\CARVEL\\Correos\\Formato correos.xlsx')
     ws = wb.active
     lista_completa = []
-    filas_total = 28  # número de la última fila
+    filas_total = 4 # número de la última fila
     columnas_total = 9
     for row in range(2, filas_total + 1):  # Se tienen que cambiar
         laux = []
