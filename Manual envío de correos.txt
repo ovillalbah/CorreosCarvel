@@ -1,0 +1,11 @@
+proceso de enviar correos masivos
+1) filtrar en el archivo de cartera
+2) copiar en el archivo excel final -formato Correos-
+3) redondear las cifras
+4) verificar los posibles correos repetidos 
+5) duplicar filas en caso de correos repetidos
+6) ajustar en python el número total de filas y columnas
+7) realizar o verificar la activación de la seguridad en gmail
+8) ajustar mensaje en python
+9) probar*
+10) enviar
