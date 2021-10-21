@@ -22,7 +22,7 @@ def obtener_valores() -> list:
     wb = load_workbook('Formato correos.xlsx')
     ws = wb.active
     lista_completa = []
-    filas_total = 29  # número de la última fila
+    filas_total = 28  # número de la última fila
     columnas_total = 9
     for row in range(2, filas_total + 1):  # Se tienen que cambiar
         laux = []
@@ -65,19 +65,19 @@ def enviar_mensaje(lista: tuple) -> None:
         tipo_cobro = row[7].strip()
         tipo_AP = row[8].strip()
 
-        fecha = '31 de agosto de 2021'
+        fecha = '30 de septiembre de 2021'
 
         mensaje = MIMEMultipart()
         mensaje['Subject'] = f'{asunto} - INMUEBLE {inmueble}'
         cuerpo = (f"""RECORDATORIO COBRO {tipo_cobro.upper()}\n\n\n
 Apreciado(a) Señor (a),\n\n\n
-La obligación que usted tiene como propietario/tenedor del Inmueble de la referencia, se encuentra actualmente en cobro {tipo_AP.upper()} bajo la supervisión de CARVEL SOLUCIONES JURÍDICAS Y ADMINISTRATIVAS S.A.S., lo anterior debido al incumplimiento en sus pagos de las cuotas de administración que a {fecha} se discriminan a continuación\n\n\n
+La obligación que usted tiene como propietario/tenedor del Inmueble de la referencia, se encuentra actualmente en cobro {tipo_AP.upper()} bajo la supervisión de CARVEL SOLUCIONES JURÍDICAS Y ADMINISTRATIVAS S.A.S., lo anterior debido al incumplimiento en sus pagos de las cuotas de administración que a {fecha} se discriminan a continuación:\n\n\n
 Saldo a Capital: ${capital_inicial + costas:,.0f}\n
 Honorarios Cobro {tipo_cobro}: ${honorarios:,.0f}\n
 Total Deuda: ${total:,.0f}\n\n\n
 Solicitamos cancelar el valor adeudado y si ya realizó el pago, le pedimos que por favor se comunique con nosotros para verificar con los respectivos soportes en la administración.\n
 Es necesario que ponga al día la obligación, debido a que si usted hace abonos parciales estos deben estar autorizados previamente, ya que es usted acreedor al pago de honorarios sobre todos los abonos que efectúe.\n
-AÚN PUEDE EVITAR ESTA SITUACIÓN, COMUNÍQUESE DE INMEDIATO y así impedir más cargos, con el fin de efectuar el pago y/o llegar a un acuerdo. Estaremos atentos a cualquier inquietud en nuestras líneas 3107619044 - 3152444048 - 3214579029 o en el correo electrónico carvel.soluciones@gmail.com.\n\n\n
+AÚN PUEDE EVITAR ESTA SITUACIÓN, COMUNÍQUESE DE INMEDIATO y así impedir más cargos, con el fin de efectuar el pago y/o llegar a un acuerdo. Estaremos atentos a cualquier inquietud en nuestras líneas 3107619044 o en el correo electrónico carvel.soluciones@gmail.com.\n\n\n
 Cordialmente,\n\n\n
 CAROLINA VELÁSQUEZ\n
 Departamento Jurídico""")
