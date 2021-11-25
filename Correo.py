@@ -19,10 +19,11 @@ from termcolor import colored"""
 
 
 def obtener_valores() -> list:
+
     wb = load_workbook('Formato correos.xlsx')
     ws = wb.active
     lista_completa = []
-    filas_total = 18  # número de la última fila
+    filas_total = 21 # número de la última fila
     columnas_total = 9
     for row in range(2, filas_total + 1):  # Se tienen que cambiar
         laux = []
@@ -77,7 +78,7 @@ Honorarios Cobro {tipo_cobro}: ${honorarios:,.0f}\n
 Total Deuda: ${total:,.0f}\n\n\n
 Solicitamos cancelar el valor adeudado y si ya realizó el pago, le pedimos que por favor se comunique con nosotros para verificar con los respectivos soportes en la administración.\n
 Es necesario que ponga al día la obligación, debido a que si usted hace abonos parciales estos deben estar autorizados previamente, ya que es usted acreedor al pago de honorarios sobre todos los abonos que efectúe.\n
-AÚN PUEDE EVITAR ESTA SITUACIÓN, COMUNÍQUESE DE INMEDIATO y así impedir más cargos, con el fin de efectuar el pago y/o llegar a un acuerdo. Estaremos atentos a cualquier inquietud en nuestras líneas  3107619044  o en el correo electrónico carvel.soluciones@gmail.com.\n\n\n
+AÚN PUEDE EVITAR ESTA SITUACIÓN, COMUNÍQUESE DE INMEDIATO y así impedir más cargos, con el fin de efectuar el pago y/o llegar a un acuerdo. Estaremos atentos a cualquier inquietud en nuestras líneas 3107619044 o en el correo electrónico carvel.soluciones@gmail.com.\n\n\n
 Cordialmente,\n\n\n
 CAROLINA VELÁSQUEZ\n
 Departamento Jurídico""")
@@ -106,3 +107,6 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
