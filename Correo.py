@@ -3,6 +3,16 @@ from openpyxl.utils import get_column_letter
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from datetime import datetime
+
+def execution_time(func):
+    def wrapper(*args, **kwargs):
+        initial_time = datetime.now()
+        func(*args, **kwargs)
+        final_time = datetime.now()
+        time_elapsed = final_time - initial_time
+        print(f'Pasaron {time_elapsed.total_seconds()} segundos')
+    return wrapper
 
 """from colorama import init
 from termcolor import colored"""
@@ -23,7 +33,7 @@ def obtener_valores() -> list:
     wb = load_workbook('Formato correos.xlsx')
     ws = wb.active
     lista_completa = []
-    filas_total = 21 # número de la última fila
+    filas_total = 48 # número de la última fila
     columnas_total = 9
     for row in range(2, filas_total + 1):  # Se tienen que cambiar
         laux = []
@@ -52,7 +62,7 @@ def limpiar_datos(lista: list) -> tuple:
         lclean.append(laux)
     return tuple(lclean)
 
-
+@execution_time
 def enviar_mensaje(lista: tuple) -> None:
     count = 0
     for row in lista:
@@ -66,7 +76,7 @@ def enviar_mensaje(lista: tuple) -> None:
         tipo_cobro = row[7].strip()
         tipo_AP = row[8].strip()
 
-        fecha = '31 de octubre de 2021'
+        fecha = '31 de diciembre de 2021'
 
         mensaje = MIMEMultipart()
         mensaje['Subject'] = f'{asunto} - INMUEBLE {inmueble}'
@@ -105,8 +115,8 @@ def main():
     enviar_mensaje(ld)
 
 
-if __name__ == '__main__':
-    main()
+"""if __name__ == '__main__':
+    main()"""
 
 
 
