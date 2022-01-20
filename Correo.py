@@ -14,7 +14,7 @@ def execution_time(func):
         print(f'Pasaron {time_elapsed.total_seconds()} segundos')
     return wrapper
 
-print("esto es la rama v_2.0")
+print("Esto es la rama v_2.0")
 
 """from colorama import init
 from termcolor import colored"""
@@ -32,10 +32,10 @@ from termcolor import colored"""
 
 def obtener_valores() -> list:
 
-    wb = load_workbook('Formato correos.xlsx')
+    wb = load_workbook('Formato correos nuevo.xlsx')
     ws = wb.active
     lista_completa = []
-    filas_total = 48 # número de la última fila
+    filas_total = 2 # número de la última fila
     columnas_total = 9
     for row in range(2, filas_total + 1):  # Se tienen que cambiar
         laux = []
@@ -82,7 +82,7 @@ def enviar_mensaje(lista: tuple) -> None:
 
         mensaje = MIMEMultipart()
         mensaje['Subject'] = f'{asunto} - INMUEBLE {inmueble}'
-        cuerpo = (f"""RECORDATORIO COBRO {tipo_cobro.upper()}\n\n\n
+        '''cuerpo = (f"""RECORDATORIO COBRO {tipo_cobro.upper()}\n\n\n
 Apreciado(a) Señor (a),\n\n\n
 La obligación que usted tiene como propietario/tenedor del Inmueble de la referencia, se encuentra actualmente en cobro {tipo_AP.upper()} bajo la supervisión de CARVEL SOLUCIONES JURÍDICAS Y ADMINISTRATIVAS S.A.S., lo anterior debido al incumplimiento en sus pagos de las cuotas de administración que a {fecha} se discriminan a continuación:\n\n\n
 Saldo a Capital: ${capital_inicial + costas:,.0f}\n
@@ -93,14 +93,30 @@ Es necesario que ponga al día la obligación, debido a que si usted hace abonos
 AÚN PUEDE EVITAR ESTA SITUACIÓN, COMUNÍQUESE DE INMEDIATO y así impedir más cargos, con el fin de efectuar el pago y/o llegar a un acuerdo. Estaremos atentos a cualquier inquietud en nuestras líneas 3107619044 o en el correo electrónico carvel.soluciones@gmail.com.\n\n\n
 Cordialmente,\n\n\n
 CAROLINA VELÁSQUEZ\n
-Departamento Jurídico""")
+Departamento Jurídico""")'''
 
-        mensaje.attach(MIMEText(cuerpo, 'plain'))
+        cuerpo = f"""\
+        <html>
+          <head></head>
+          <body>
+              <header>
+                hola mundo
+              </header> 
+              <main>
+                <section>
+                    <article>
+                    
+                </section>
+              </main> 
+          </body>
+        </html>
+        """
+        mensaje.attach(MIMEText(cuerpo, 'html'))
         texto = mensaje.as_string()
         servidor = smtplib.SMTP('smtp.gmail.com', 587)
         servidor.starttls()
-        servidor.login('carvel.soluciones@gmail.com', 'Chico2021*')
-        servidor.sendmail('carvel.soluciones@gmail.com', correos, texto)
+        servidor.login('ovillalbaunal@gmail.com', 'la cambio despues del parcial')
+        servidor.sendmail('ovillalbaunal@gmail.com', correos, texto)
         servidor.quit()
 
         count += 1
@@ -117,8 +133,8 @@ def main():
     enviar_mensaje(ld)
 
 
-"""if __name__ == '__main__':
-    main()"""
+if __name__ == '__main__':
+    main()
 
 
 
