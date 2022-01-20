@@ -14,6 +14,8 @@ def execution_time(func):
         print(f'Pasaron {time_elapsed.total_seconds()} segundos')
     return wrapper
 
+print("esto es la rama v_2.0")
+
 """from colorama import init
 from termcolor import colored"""
 
