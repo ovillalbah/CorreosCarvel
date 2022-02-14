@@ -36,7 +36,7 @@ def obtener_valores() -> list:
     wb = load_workbook('Formato correos nuevo.xlsx')
     ws = wb.active
     lista_completa = []
-    filas_total = 3  # número de la última fila
+    filas_total = 9  # número de la última fila
     columnas_total = 9
     for row in range(2, filas_total + 1):  # Se tienen que cambiar
         laux = []
@@ -80,7 +80,7 @@ def enviar_mensaje(lista: tuple) -> None:
         tipo_cobro = row[7].strip()
         tipo_AP = row[8].strip()
 
-        fecha = '31 de diciembre de 2021'
+        fecha = '31 de enero de 2022'
 
         mensaje = MIMEMultipart()
         mensaje['Subject'] = f'COBRO {tipo_cobro.upper()} - {asunto} - INMUEBLE {inmueble}'
@@ -91,8 +91,6 @@ def enviar_mensaje(lista: tuple) -> None:
           <head></head>
           <body>
               <header>
-                  <a href="">
-                      <img src="C:Users\AMD\Documents\CARVEL\Python\Correos\logo.png" alt="logo" width="100" height="100">
                   <h3><b><ins>RECORDATORIO COBRO {tipo_cobro.upper()}</h3><br><br>
               </header> 
               <main>
