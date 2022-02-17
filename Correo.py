@@ -31,12 +31,12 @@ from termcolor import colored"""
 
 """print(ws['A2'].value)"""
 
-
+@execution_time
 def obtener_valores() -> list:
     wb = load_workbook('Formato correos nuevo.xlsx')
     ws = wb.active
     lista_completa = []
-    filas_total = 9  # número de la última fila
+    filas_total = 10  # número de la última fila
     columnas_total = 9
     for row in range(2, filas_total + 1):  # Se tienen que cambiar
         laux = []
@@ -45,6 +45,8 @@ def obtener_valores() -> list:
             laux.append(ws[chr + str(row)].value)
         lista_completa.append(laux)
     return lista_completa
+l = obtener_valores()
+print(l)
 
 
 def limpiar_datos(lista: list) -> tuple:
@@ -104,7 +106,7 @@ def enviar_mensaje(lista: tuple) -> None:
                   <p>Es necesario que ponga al día la obligación, debido a que si usted hace abonos parciales estos deben estar autorizados previamente, ya que es usted acreedor al pago de honorarios sobre todos los abonos que efectúe.</p>
                   <p><b>AÚN PUEDE EVITAR ESTA SITUACIÓN, COMUNÍQUESE DE INMEDIATO</b> y así impedir más cargos, con el fin de efectuar el pago y/o llegar a un acuerdo.
                   Estaremos atentos a cualquier inquietud en nuestras líneas <b>3107619044</b> o en el correo electrónico
-                  <a href = "mailto: carvel.soluciones@gmail.com">carvel.soluciones@gmail.com.</a><br><br><br>
+                  <a href = "mailto:carvel.soluciones@gmail.com">carvel.soluciones@gmail.com.</a><br><br><br>
                   <p>
                   Cordialmente,<br><br><br>
                   <b>Carolina Velásquez</b><br>
@@ -131,11 +133,11 @@ def enviar_mensaje(lista: tuple) -> None:
 
 # ------------------------------------------------------
 
-def main():
-    ov = obtener_valores()
-    ld = limpiar_datos(ov)
-    enviar_mensaje(ld)
+# def main():
+#     ov = obtener_valores()
+#     ld = limpiar_datos(ov)
+#     enviar_mensaje(ld)
 
-
-"""if __name__ == '__main__':
-    main()"""
+#
+# """if __name__ == '__main__':
+#     main()"""
